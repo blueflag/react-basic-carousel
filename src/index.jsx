@@ -98,8 +98,13 @@ class ReactBasicCarousel extends Component {
     }
 
     renderItem(item, key) {
+        const className = classNames(
+            this.classChild('item'), {
+            [`${this.classChild('item')}${this.props.classNameModifier}active`]: (key === this.state.position)
+        });
+
         return React.cloneElement(item, {
-            className: this.props.classNamePrefix + this.props.classNameChild + 'item',
+            className,
             key: key
         });
     }
